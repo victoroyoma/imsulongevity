@@ -116,7 +116,7 @@ export function Hero() {
             duration: 0.8,
             delay: 0.7
           }}
-          className="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-12 mb-8 sm:mb-12 text-white/80 w-full max-w-2xl">
+          className="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-12 mb-8 sm:mb-10 text-white/80 w-full max-w-2xl">
 
           <div className="flex items-center gap-3">
             <Calendar className="text-terracotta w-5 h-5" />
@@ -127,6 +127,57 @@ export function Hero() {
             <span className="text-sm font-medium">
               Imo State University, Nigeria
             </span>
+          </div>
+        </motion.div>
+
+        {/* Organizers */}
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 20
+          }}
+          animate={{
+            opacity: 1,
+            y: 0
+          }}
+          transition={{
+            duration: 0.8,
+            delay: 0.8
+          }}
+          className="mb-8 sm:mb-12 max-w-3xl">
+
+          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg px-4 sm:px-6 py-5 sm:py-6">
+            <div className="space-y-3 sm:space-y-4 mb-5 sm:mb-6">
+              <p className="text-sand/90 text-xs sm:text-sm leading-relaxed">
+                <span className="text-gold font-semibold">Organised by</span> Afrolongevity
+              </p>
+              <p className="text-sand/90 text-xs sm:text-sm leading-relaxed">
+                <span className="text-gold font-semibold">In Strategic Partnership with</span> Imo State University, Nigeria
+              </p>
+              <p className="text-sand/90 text-xs sm:text-sm leading-relaxed">
+                <span className="text-gold font-semibold">In Collaboration with</span> the Department of Youth in Development, University of Venda, South Africa
+              </p>
+            </div>
+            
+            {/* University Logos */}
+            <div className="pt-4 sm:pt-5 border-t border-white/10 flex items-center justify-center gap-6 sm:gap-10">
+              <div className="flex flex-col items-center gap-2">
+                <img 
+                  src="https://res.cloudinary.com/dmqjqn6x3/image/upload/v1771257953/imu_qlm7cq.jpg" 
+                  alt="Imo State University Logo" 
+                  className="h-16 sm:h-20 w-auto object-contain bg-white/10 rounded-lg p-2"
+                />
+                <span className="text-[10px] sm:text-xs text-sand/70 text-center">IMSU</span>
+              </div>
+              <div className="flex flex-col items-center gap-2">
+                <img 
+                  src="https://res.cloudinary.com/dmqjqn6x3/image/upload/v1771257953/univenda_ftjoro.jpg" 
+                  alt="University of Venda Logo" 
+                  className="h-16 sm:h-20 w-auto object-contain bg-white/10 rounded-lg p-2"
+                />
+                <span className="text-[10px] sm:text-xs text-sand/70 text-center">Univen</span>
+              </div>
+            </div>
           </div>
         </motion.div>
 
@@ -142,7 +193,7 @@ export function Hero() {
           }}
           transition={{
             duration: 0.8,
-            delay: 0.8
+            delay: 0.9
           }}
           className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto items-stretch sm:items-center max-w-2xl sm:max-w-none px-2 sm:px-0">
 

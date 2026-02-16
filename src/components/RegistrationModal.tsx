@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, User, Mail, Phone, Building2, FileText, Send } from 'lucide-react';
+import { X, User, Mail, Phone, Building2, FileText, Send, CreditCard, Banknote, MessageCircle, Copy, CheckCircle2 } from 'lucide-react';
 
 interface RegistrationModalProps {
   isOpen: boolean;
@@ -24,6 +24,19 @@ export function RegistrationModal({ isOpen, onClose, type }: RegistrationModalPr
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [paymentMethod, setPaymentMethod] = useState<'paystack' | 'bank' | null>(null);
+  const [copiedField, setCopiedField] = useState<string | null>(null);
+
+  const copyToClipboard = (text: string, field: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedField(field);
+    setTimeout(() => setCopiedField(null), 2000);
+  };
+
+  const whatsappMessage = encodeURIComponent(
+    `Hello, I would like to submit evidence of payment for the IMSU International Conference on Longevity 2026.\n\nName: ${formData.fullName}\nEmail: ${formData.email}\nPhone: ${formData.phone}`
+  );
+  const whatsappLink = `https://wa.me/2348000000000?text=${whatsappMessage}`;
 
   useEffect(() => {
     if (isOpen) {
@@ -31,6 +44,8 @@ export function RegistrationModal({ isOpen, onClose, type }: RegistrationModalPr
     } else {
       document.body.style.overflow = 'unset';
       setSubmitSuccess(false);
+      setPaymentMethod(null);
+      setCopiedField(null);
       setFormData({
         fullName: '',
         email: '',
@@ -284,6 +299,159 @@ export function RegistrationModal({ isOpen, onClose, type }: RegistrationModalPr
                         />
                       </div>
                     </div>
+
+                    {/* Payment Section for Registration */}
+                    {type === 'register' && (
+                      <div className="border-t border-gray-200 pt-6 mt-6">
+                        <div className="bg-terracotta/5 rounded-lg p-4 sm:p-6 mb-6">
+                          <div className="flex items-center justify-between mb-2">
+                            <h3 className="text-lg sm:text-xl font-bold text-charcoal">Registration Fee</h3>
+                            <span className="text-2xl sm:text-3xl font-bold text-terracotta">₦20,000</span>
+                          </div>
+                          <p className="text-xs sm:text-sm text-gray-600">Flat rate for all participants</p>
+                        </div>
+
+                        <div className="space-y-4">
+                          <label className="block text-sm font-semibold text-charcoal mb-3">
+                            Select Payment Method <span className="text-terracotta">*</span>
+                          </label>
+
+                          {/* Payment Method Options */}
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <button
+                              type="button"
+                              onClick={() => setPaymentMethod('paystack')}
+                              className={`p-4 rounded-lg border-2 transition-all ${
+                                paymentMethod === 'paystack'
+                                  ? 'border-terracotta bg-terracotta/5'
+                                  : 'border-gray-300 hover:border-terracotta/50'
+                              }`}
+                            >
+                              <div className="flex items-center gap-3">
+                                <CreditCard className="text-terracotta" size={20} />
+                                <div className="text-left">
+                                  <p className="font-semibold text-charcoal text-sm">Pay with Card</p>
+                                  <p className="text-xs text-gray-600">Paystack (Instant)</p>
+                                </div>
+                              </div>
+                            </button>
+
+                            <button
+                              type="button"
+                              onClick={() => setPaymentMethod('bank')}
+                              className={`p-4 rounded-lg border-2 transition-all ${
+                                paymentMethod === 'bank'
+                                  ? 'border-terracotta bg-terracotta/5'
+                                  : 'border-gray-300 hover:border-terracotta/50'
+                              }`}
+                            >
+                              <div className="flex items-center gap-3">
+                                <Banknote className="text-terracotta" size={20} />
+                                <div className="text-left">
+                                  <p className="font-semibold text-charcoal text-sm">Bank Transfer</p>
+                                  <p className="text-xs text-gray-600">Direct deposit</p>
+                                </div>
+                              </div>
+                            </button>
+                          </div>
+
+                          {/* Paystack Payment */}
+                          {paymentMethod === 'paystack' && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: 'auto' }}
+                              className="bg-forest/5 rounded-lg p-4 sm:p-6 mt-4"
+                            >
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  // Initialize Paystack payment
+                                  window.open('https://paystack.com/pay/imsulongevity2026', '_blank');
+                                }}
+                                className="w-full bg-terracotta text-white py-3 rounded-lg font-semibold hover:bg-terracotta/90 transition-all flex items-center justify-center gap-2"
+                              >
+                                <CreditCard size={18} />
+                                Pay ₦20,000 with Paystack
+                              </button>
+                              <p className="text-xs text-gray-600 text-center mt-3">
+                                You will be redirected to Paystack to complete your payment
+                              </p>
+                            </motion.div>
+                          )}
+
+                          {/* Bank Transfer Details */}
+                          {paymentMethod === 'bank' && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: 'auto' }}
+                              className="bg-forest/5 rounded-lg p-4 sm:p-6 mt-4 space-y-4"
+                            >
+                              <h4 className="font-semibold text-charcoal mb-3">Bank Account Details</h4>
+                              
+                              <div className="space-y-3">
+                                <div className="bg-white rounded-lg p-3 border border-gray-200">
+                                  <p className="text-xs text-gray-600 mb-1">Bank Name</p>
+                                  <div className="flex items-center justify-between">
+                                    <p className="font-semibold text-charcoal">Access Bank</p>
+                                    <button
+                                      type="button"
+                                      onClick={() => copyToClipboard('Access Bank', 'bank')}
+                                      className="text-terracotta hover:text-terracotta/80 transition-colors"
+                                    >
+                                      {copiedField === 'bank' ? <CheckCircle2 size={16} /> : <Copy size={16} />}
+                                    </button>
+                                  </div>
+                                </div>
+
+                                <div className="bg-white rounded-lg p-3 border border-gray-200">
+                                  <p className="text-xs text-gray-600 mb-1">Account Number</p>
+                                  <div className="flex items-center justify-between">
+                                    <p className="font-semibold text-charcoal text-lg">1234567890</p>
+                                    <button
+                                      type="button"
+                                      onClick={() => copyToClipboard('1234567890', 'account')}
+                                      className="text-terracotta hover:text-terracotta/80 transition-colors"
+                                    >
+                                      {copiedField === 'account' ? <CheckCircle2 size={16} /> : <Copy size={16} />}
+                                    </button>
+                                  </div>
+                                </div>
+
+                                <div className="bg-white rounded-lg p-3 border border-gray-200">
+                                  <p className="text-xs text-gray-600 mb-1">Account Name</p>
+                                  <div className="flex items-center justify-between">
+                                    <p className="font-semibold text-charcoal">IMSU Longevity Conference</p>
+                                    <button
+                                      type="button"
+                                      onClick={() => copyToClipboard('IMSU Longevity Conference', 'name')}
+                                      className="text-terracotta hover:text-terracotta/80 transition-colors"
+                                    >
+                                      {copiedField === 'name' ? <CheckCircle2 size={16} /> : <Copy size={16} />}
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div className="border-t border-gray-300 pt-4 mt-4">
+                                <p className="text-sm font-semibold text-charcoal mb-3">After payment, submit evidence:</p>
+                                <a
+                                  href={whatsappLink}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="w-full bg-[#25D366] text-white py-3 rounded-lg font-semibold hover:bg-[#22c55e] transition-all flex items-center justify-center gap-2"
+                                >
+                                  <MessageCircle size={18} />
+                                  Submit Payment Evidence via WhatsApp
+                                </a>
+                                <p className="text-xs text-gray-600 text-center mt-2">
+                                  Please include your payment receipt/screenshot
+                                </p>
+                              </div>
+                            </motion.div>
+                          )}
+                        </div>
+                      </div>
+                    )}
 
                     {/* Additional Fields for Paper/Abstract Submission */}
                     {(type === 'cfp' || type === 'abstract') && (

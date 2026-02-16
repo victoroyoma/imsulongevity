@@ -229,6 +229,26 @@ export function CallForPapers() {
             </div>
           </div>
         </div>
+
+        {/* Publication Opportunities */}
+        <div className="mt-12 sm:mt-16">
+          <div className="bg-gradient-to-br from-forest/5 to-terracotta/5 rounded-2xl p-8 sm:p-10 md:p-12 border border-forest/20">
+            <h3 className="text-2xl sm:text-3xl font-serif font-bold text-charcoal mb-6">
+              Publication Opportunities
+            </h3>
+            <div className="space-y-6 text-gray-700 leading-relaxed">
+              <p>
+                Selected papers presented at the conference will be considered for publication in a special issue of the <span className="font-semibold text-charcoal">African and Global Issues Quarterly (AGIQ)</span>, subject to peer review and editorial standards.
+              </p>
+              <p>
+                In addition, outstanding contributions may be invited for inclusion in a second volume of the edited book <span className="font-semibold italic text-charcoal">Rethinking Philosophy for Education, Society and Human Development in Sub-Saharan Africa</span>, published by <span className="font-semibold text-charcoal">Emerald Publishing</span>, following the publisher's review and editorial processes.
+              </p>
+              <p className="text-sm text-gray-600 italic pt-4 border-t border-gray-300">
+                Publication in either outlet is contingent upon scholarly quality, thematic relevance, and compliance with editorial guidelines.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>);
 

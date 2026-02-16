@@ -22,9 +22,27 @@ export function Footer() {
             <p className="text-gray-400 text-sm mb-2">
               Organised by <span className="text-white font-semibold">Afrolongevity</span>
             </p>
-            <p className="text-gray-400 text-sm mb-6">
-              In Strategic Partnership with <span className="text-white font-semibold">Imo State University</span>
+            <p className="text-gray-400 text-sm mb-2">
+              In Strategic Partnership with <span className="text-white font-semibold">Imo State University, Nigeria</span>
             </p>
+            <p className="text-gray-400 text-sm mb-2">
+              In Collaboration with <span className="text-white font-semibold">the Department of Youth in Development, University of Venda, South Africa</span>
+            </p>
+            
+            {/* University Logos */}
+            <div className="flex items-center gap-4 mb-6 mt-5">
+              <img 
+                src="https://res.cloudinary.com/dmqjqn6x3/image/upload/v1771257953/imu_qlm7cq.jpg" 
+                alt="Imo State University Logo" 
+                className="h-12 sm:h-14 w-auto object-contain bg-white/5 rounded p-1.5"
+              />
+              <img 
+                src="https://res.cloudinary.com/dmqjqn6x3/image/upload/v1771257953/univenda_ftjoro.jpg" 
+                alt="University of Venda Logo" 
+                className="h-12 sm:h-14 w-auto object-contain bg-white/5 rounded p-1.5"
+              />
+            </div>
+            
             <div className="flex gap-4">
               {/* Social placeholders */}
               {[1, 2, 3].map((i) =>
