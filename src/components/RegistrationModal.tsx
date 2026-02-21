@@ -36,7 +36,7 @@ export function RegistrationModal({ isOpen, onClose, type }: RegistrationModalPr
   const whatsappMessage = encodeURIComponent(
     `Hello, I would like to submit evidence of payment for the IMSU International Conference on Longevity 2026.\n\nName: ${formData.fullName}\nEmail: ${formData.email}\nPhone: ${formData.phone}`
   );
-  const whatsappLink = `https://wa.me/2348000000000?text=${whatsappMessage}`;
+  const whatsappLink = `https://wa.me/2348117153359?text=${whatsappMessage}`;
 
   useEffect(() => {
     if (isOpen) {
