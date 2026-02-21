@@ -70,22 +70,14 @@ export function Navigation() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center gap-4">
-          {/* Left Logo - Afrolongevity */}
-          <div className="flex-shrink-0">
-            <img 
-              src="https://res.cloudinary.com/dmqjqn6x3/image/upload/v1771663955/afrolong_vtqs0q.jpg" 
-              alt="Afrolongevity Logo"
-              className="h-8 sm:h-10 md:h-12 lg:h-14 w-auto object-contain bg-white/90 rounded-lg p-1"
-            />
-          </div>
-
           {/* Center - Main Navigation */}
           <div className="flex items-center gap-4 flex-1 justify-center">
           <a href="#home" className="flex items-center gap-2 sm:gap-3 group relative">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-terracotta via-terracotta to-forest rounded-xl shadow-md flex items-center justify-center text-white font-serif font-bold text-xl sm:text-2xl group-hover:shadow-lg group-hover:scale-105 transition-all duration-300 relative overflow-hidden">
-              <span className="relative z-10">I</span>
-              <div className="absolute inset-0 bg-gradient-to-br from-forest to-terracotta opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </div>
+            <img 
+              src="https://res.cloudinary.com/dmqjqn6x3/image/upload/v1771663955/afrolong_vtqs0q.jpg" 
+              alt="Afrolongevity Logo"
+              className="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-xl shadow-md group-hover:shadow-lg group-hover:scale-105 transition-all duration-300 bg-white/90 p-0.5"
+            />
             <div
               className={`flex flex-col transition-colors duration-300 ${scrolled ? 'text-charcoal' : 'text-white drop-shadow-md'}`}>
 
