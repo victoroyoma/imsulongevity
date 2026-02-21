@@ -69,7 +69,18 @@ export function Navigation() {
         aria-label="Main navigation">
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center gap-4">
+          {/* Left Logo - Afrolongevity */}
+          <div className="flex-shrink-0">
+            <img 
+              src="https://res.cloudinary.com/dmqjqn6x3/image/upload/v1771663955/afrolong_vtqs0q.jpg" 
+              alt="Afrolongevity Logo"
+              className="h-8 sm:h-10 md:h-12 lg:h-14 w-auto object-contain bg-white/90 rounded-lg p-1"
+            />
+          </div>
+
+          {/* Center - Main Navigation */}
+          <div className="flex items-center gap-4 flex-1 justify-center">
           <a href="#home" className="flex items-center gap-2 sm:gap-3 group relative">
             <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-terracotta via-terracotta to-forest rounded-xl shadow-md flex items-center justify-center text-white font-serif font-bold text-xl sm:text-2xl group-hover:shadow-lg group-hover:scale-105 transition-all duration-300 relative overflow-hidden">
               <span className="relative z-10">I</span>
@@ -144,6 +155,16 @@ export function Navigation() {
                   : 'bg-gradient-to-r from-sand to-gold opacity-0 group-hover/btn:opacity-100'
               }`}></div>
             </button>
+          </div>
+          </div>
+
+          {/* Right Logo - IMSU */}
+          <div className="flex-shrink-0 hidden md:block">
+            <img 
+              src="https://res.cloudinary.com/dmqjqn6x3/image/upload/v1771257953/imu_qlm7cq.jpg" 
+              alt="IMSU Logo"
+              className="h-10 sm:h-12 md:h-12 lg:h-14 w-auto object-contain bg-white/90 rounded-lg p-1"
+            />
           </div>
 
           {/* Mobile Menu Button */}
