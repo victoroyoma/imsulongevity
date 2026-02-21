@@ -31,6 +31,24 @@ export default {
         charcoal: {
           DEFAULT: '#1A1A1A',
           light: '#333333',
+        },
+        navy: {
+          DEFAULT: '#0A0E27',
+          dark: '#050813',
+          light: '#151B3D',
+          accent: '#1C2447',
+        },
+        cyan: {
+          DEFAULT: '#00D9FF',
+          light: '#4DE5FF',
+          dark: '#00A8CC',
+          glow: '#00D9FF55',
+        },
+        dna: {
+          blue: '#00B4D8',
+          cyan: '#00D9FF',
+          green: '#48CAE4',
+          ribbon: '#0096C7',
         }
       },
       fontFamily: {

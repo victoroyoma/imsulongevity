@@ -366,7 +366,7 @@ export function RegistrationModal({ isOpen, onClose, type }: RegistrationModalPr
                                 type="button"
                                 onClick={() => {
                                   // Initialize Paystack payment
-                                  window.open('https://paystack.com/pay/imsulongevity2026', '_blank');
+                                  window.open('https://paystack.com/buy/conference-ticket-gpnsjp', '_blank');
                                 }}
                                 className="w-full bg-terracotta text-white py-3 rounded-lg font-semibold hover:bg-terracotta/90 transition-all flex items-center justify-center gap-2"
                               >
@@ -392,10 +392,10 @@ export function RegistrationModal({ isOpen, onClose, type }: RegistrationModalPr
                                 <div className="bg-white rounded-lg p-3 border border-gray-200">
                                   <p className="text-xs text-gray-600 mb-1">Bank Name</p>
                                   <div className="flex items-center justify-between">
-                                    <p className="font-semibold text-charcoal">Access Bank</p>
+                                    <p className="font-semibold text-charcoal">KUDA Business</p>
                                     <button
                                       type="button"
-                                      onClick={() => copyToClipboard('Access Bank', 'bank')}
+                                      onClick={() => copyToClipboard('KUDA Business', 'bank')}
                                       className="text-terracotta hover:text-terracotta/80 transition-colors"
                                     >
                                       {copiedField === 'bank' ? <CheckCircle2 size={16} /> : <Copy size={16} />}
@@ -406,10 +406,10 @@ export function RegistrationModal({ isOpen, onClose, type }: RegistrationModalPr
                                 <div className="bg-white rounded-lg p-3 border border-gray-200">
                                   <p className="text-xs text-gray-600 mb-1">Account Number</p>
                                   <div className="flex items-center justify-between">
-                                    <p className="font-semibold text-charcoal text-lg">1234567890</p>
+                                    <p className="font-semibold text-charcoal text-lg">3001089061</p>
                                     <button
                                       type="button"
-                                      onClick={() => copyToClipboard('1234567890', 'account')}
+                                      onClick={() => copyToClipboard('3001089061', 'account')}
                                       className="text-terracotta hover:text-terracotta/80 transition-colors"
                                     >
                                       {copiedField === 'account' ? <CheckCircle2 size={16} /> : <Copy size={16} />}
@@ -420,10 +420,10 @@ export function RegistrationModal({ isOpen, onClose, type }: RegistrationModalPr
                                 <div className="bg-white rounded-lg p-3 border border-gray-200">
                                   <p className="text-xs text-gray-600 mb-1">Account Name</p>
                                   <div className="flex items-center justify-between">
-                                    <p className="font-semibold text-charcoal">IMSU Longevity Conference</p>
+                                    <p className="font-semibold text-charcoal">TAFFD'S GLOBAL LTD</p>
                                     <button
                                       type="button"
-                                      onClick={() => copyToClipboard('IMSU Longevity Conference', 'name')}
+                                      onClick={() => copyToClipboard("TAFFD'S GLOBAL LTD", 'name')}
                                       className="text-terracotta hover:text-terracotta/80 transition-colors"
                                     >
                                       {copiedField === 'name' ? <CheckCircle2 size={16} /> : <Copy size={16} />}

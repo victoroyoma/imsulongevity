@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Calendar, MapPin } from 'lucide-react';
+import { ArrowRight, Calendar, MapPin, Heart } from 'lucide-react';
 import { RegistrationModal } from './RegistrationModal';
+import { DonateModal } from './DonateModal';
 
 export function Hero() {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalType, setModalType] = useState<'register' | 'cfp' | 'abstract'>('register');
+  const [donateModalOpen, setDonateModalOpen] = useState(false);
 
   const openModal = (type: 'register' | 'cfp' | 'abstract') => {
     setModalType(type);
@@ -15,6 +17,7 @@ export function Hero() {
   return (
     <>
       <RegistrationModal isOpen={modalOpen} onClose={() => setModalOpen(false)} type={modalType} />
+      <DonateModal isOpen={donateModalOpen} onClose={() => setDonateModalOpen(false)} />
       
       <section
         id="home"
@@ -61,13 +64,36 @@ export function Hero() {
             duration: 0.8,
             delay: 0.2
           }}
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-serif font-bold text-white leading-[1.2] sm:leading-[1.15] mb-6 sm:mb-8 max-w-5xl px-2 sm:px-0">
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-serif font-bold text-white leading-[1.2] sm:leading-[1.15] mb-3 sm:mb-4 max-w-5xl px-2 sm:px-0">
 
-          Rethinking Aging, Health, and Human Flourishing in{' '}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-terracotta to-gold">
-            Africa
-          </span>
+          From Crisis-Care to Quality-of-Life in Africa
         </motion.h1>
+
+        {/* Conference Theme */}
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 20
+          }}
+          animate={{
+            opacity: 1,
+            y: 0
+          }}
+          transition={{
+            duration: 0.8,
+            delay: 0.3
+          }}
+          className="mb-6 sm:mb-8">
+          <p className="text-sm sm:text-base text-sand/70 uppercase tracking-wider mb-2">Theme:</p>
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-serif font-bold leading-tight">
+            <span className="text-white">Biophilosophy, </span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-cyan-300">
+              Afrolongevity
+            </span>
+            <span className="text-white"> & </span>
+            <span className="text-white">Human Enhancement</span>
+          </h2>
+        </motion.div>
 
         {/* Main Content */}
         <motion.div
@@ -217,6 +243,13 @@ export function Hero() {
             className="px-6 sm:px-8 py-3 sm:py-4 bg-transparent border-2 border-white/30 text-white rounded-lg font-semibold text-sm sm:text-base md:text-lg hover:bg-white/10 hover:border-gold backdrop-blur-sm transition-all duration-300 flex items-center justify-center focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-charcoal cursor-pointer">
 
             Submit Abstract
+          </button>
+          
+          <button
+            onClick={() => setDonateModalOpen(true)}
+            className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-cyan to-dna-blue text-white rounded-lg font-semibold text-sm sm:text-base md:text-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 shadow-lg shadow-cyan/30 focus:ring-2 focus:ring-cyan focus:ring-offset-2 focus:ring-offset-charcoal cursor-pointer group">
+            <Heart size={20} className="group-hover:scale-110 transition-transform" />
+            Donate Now
           </button>
         </motion.div>
       </div>

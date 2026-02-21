@@ -1,11 +1,13 @@
-import React from 'react';
+
 import { Navigation } from './components/Navigation';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
+import { KeyFocusAreas } from './components/KeyFocusAreas';
 import { CallForPapers } from './components/CallForPapers';
 import { Speakers } from './components/Speakers';
 import { Audience } from './components/Audience';
 import { Sponsorship } from './components/Sponsorship';
+import { Partners } from './components/Partners';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 export function App() {
@@ -17,11 +19,13 @@ export function App() {
       <Navigation />
       <main id="main-content">
         <Hero />
+        <KeyFocusAreas />
         <About />
         <CallForPapers />
         <Speakers />
         <Audience />
         <Sponsorship />
+        <Partners />
         <Contact />
       </main>
       <Footer />

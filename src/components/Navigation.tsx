@@ -1,7 +1,8 @@
 import  { useEffect, useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Heart } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { RegistrationModal } from './RegistrationModal';
+import { DonateModal } from './DonateModal';
 
 const navItems = [
 {
@@ -30,6 +31,7 @@ export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [modalOpen, setModalOpen] = useState(false);
+  const [donateModalOpen, setDonateModalOpen] = useState(false);
   
   useEffect(() => {
     const handleScroll = () => {
@@ -59,6 +61,7 @@ export function Navigation() {
   return (
     <>
       <RegistrationModal isOpen={modalOpen} onClose={() => setModalOpen(false)} type="register" />
+      <DonateModal isOpen={donateModalOpen} onClose={() => setDonateModalOpen(false)} />
       
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/98 backdrop-blur-lg shadow-lg border-b border-gray-100 py-2 sm:py-3' : 'bg-gradient-to-b from-black/20 to-transparent backdrop-blur-sm py-4 sm:py-6'}`}
@@ -114,8 +117,21 @@ export function Navigation() {
               );
             })}
             <button
+              onClick={() => setDonateModalOpen(true)}
+              className={`ml-2 px-4 sm:px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-95 focus:ring-2 focus:ring-offset-2 relative overflow-hidden group/btn ${
+                scrolled 
+                  ? 'bg-gradient-to-r from-cyan to-dna-blue text-white shadow-lg focus:ring-cyan border border-cyan/30' 
+                  : 'bg-gradient-to-r from-cyan to-dna-blue text-white shadow-xl focus:ring-cyan'
+              }`}>
+              <span className="relative z-10 flex items-center gap-1.5">
+                <Heart className="w-4 h-4" />
+                <span>Donate</span>
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-dna-blue to-cyan opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+            </button>
+            <button
               onClick={() => setModalOpen(true)}
-              className={`ml-3 px-5 sm:px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-95 focus:ring-2 focus:ring-offset-2 relative overflow-hidden group/btn ${
+              className={`ml-2 px-5 sm:px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-95 focus:ring-2 focus:ring-offset-2 relative overflow-hidden group/btn ${
                 scrolled 
                   ? 'bg-gradient-to-r from-terracotta to-forest text-white shadow-lg focus:ring-terracotta' 
                   : 'bg-white text-terracotta shadow-xl focus:ring-sand'
@@ -204,10 +220,22 @@ export function Navigation() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: navItems.length * 0.05 }}
                 onClick={() => {
+                  setDonateModalOpen(true);
+                  handleNavClick();
+                }}
+                className="inline-flex items-center justify-center w-full px-6 py-4 rounded-xl bg-gradient-to-r from-cyan to-dna-blue text-white font-bold hover:shadow-xl active:scale-95 transition-all duration-200 mt-4 border border-transparent hover:border-white/20">
+                <Heart className="w-5 h-5 mr-2" />
+                <span>Donate Now</span>
+              </motion.button>
+              <motion.button
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: navItems.length * 0.05 + 0.05 }}
+                onClick={() => {
                   setModalOpen(true);
                   handleNavClick();
                 }}
-                className="inline-flex items-center justify-center w-full px-6 py-4 rounded-xl bg-gradient-to-r from-terracotta to-forest text-white font-bold hover:shadow-xl active:scale-95 transition-all duration-200 mt-4 border border-transparent hover:border-white/20">
+                className="inline-flex items-center justify-center w-full px-6 py-4 rounded-xl bg-gradient-to-r from-terracotta to-forest text-white font-bold hover:shadow-xl active:scale-95 transition-all duration-200 mt-2 border border-transparent hover:border-white/20">
 
                 <span>Register Now</span>
                 <motion.span

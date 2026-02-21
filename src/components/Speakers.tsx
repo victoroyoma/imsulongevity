@@ -57,6 +57,18 @@ const additionalSpeakers = [
   title: 'Department of Philosophy',
   org: 'Imo State University, Nigeria',
   image: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1771258588/Dr._Stephen_Oguji_nosy31.jpg'
+},
+{
+  name: 'Dr K E Amaechi',
+  title: 'Postdoctoral Research Fellow',
+  org: 'Department of Youth in Development, University of Venda, South Africa',
+  image: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1771661136/amaechi_bwanu8.jpg'
+},
+{
+  name: 'Ojochogwu Abdul (Chogwu Abdul), PhD',
+  title: 'Afropolitan Futurist, Philosopher, Transhumanist',
+  org: '',
+  image: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1771661129/abdul_jh2d62.jpg'
 }];
 
 export function Speakers() {
@@ -275,9 +287,11 @@ export function Speakers() {
                   <p className="text-gold font-semibold text-sm mb-1">
                     {speaker.title}
                   </p>
-                  <p className="text-gray-600 text-xs sm:text-sm">
-                    {speaker.org}
-                  </p>
+                  {speaker.org && (
+                    <p className="text-gray-600 text-xs sm:text-sm">
+                      {speaker.org}
+                    </p>
+                  )}
                 </div>
               </div>
             </motion.div>
