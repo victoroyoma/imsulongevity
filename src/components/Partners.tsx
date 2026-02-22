@@ -3,6 +3,12 @@ import { Building2, Globe, Heart, Users } from 'lucide-react';
 
 const partners = [
   {
+    name: 'ILA',
+    fullName: 'International Longevity Alliance',
+    logoImage: 'https://res.cloudinary.com/dmqjqn6x3/image/upload/v1771777400/ila_dgzihn.jpg',
+    category: 'Major Partner'
+  },
+  {
     name: 'ILSA',
     fullName: 'International Longevity & Health Systems Alliance',
     logo: Building2,
@@ -53,7 +59,7 @@ export function Partners() {
         </motion.div>
 
         {/* Partners Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 mb-16">
           {partners.map((partner, index) => (
             <motion.div
               key={index}
@@ -63,9 +69,13 @@ export function Partners() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group bg-white rounded-2xl p-8 shadow-md hover:shadow-2xl border border-cyan/20 hover:border-cyan/60 transition-all duration-300 flex flex-col items-center text-center">
               
-              {/* Logo Placeholder - Using Icon */}
-              <div className="w-20 h-20 rounded-full bg-gradient-to-br from-cyan/20 to-dna-blue/20 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-cyan/30 transition-all duration-300 border border-cyan/30">
-                <partner.logo className="w-10 h-10 text-cyan-dark" />
+              {/* Logo - Image or Icon */}
+              <div className="w-20 h-20 rounded-full bg-gradient-to-br from-cyan/20 to-dna-blue/20 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-cyan/30 transition-all duration-300 border border-cyan/30 overflow-hidden">
+                {partner.logoImage ? (
+                  <img src={partner.logoImage} alt={`${partner.name} logo`} className="w-full h-full object-cover" />
+                ) : partner.logo ? (
+                  <partner.logo className="w-10 h-10 text-cyan-dark" />
+                ) : null}
               </div>
 
               {/* Partner Name */}
